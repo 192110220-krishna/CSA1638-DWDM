@@ -1,0 +1,94 @@
+@relation "customer"
+@attribute milk {true,false}
+@attribute beer {true,false}
+@attribute diapers {true,false}
+@attribute bread {true,false}
+@attribute butter {true,false}
+@attribute cookies {true,false}
+
+@data
+true,true,true,false,false,false
+true,false,false,true,true,false
+true,false,true,false,false,true
+false,false,false,true,true,true
+false,true,true,false,false,true
+true,false,true,true,true,false
+false,false,true,true,true,false
+false,true,true,false,false,false
+true,false,true,true,true,false
+false,true,false,false,false,true
+
+
+
+=== Run information ===
+
+Scheme:       weka.associations.Apriori -N 10 -T 0 -C 0.5 -D 0.05 -U 3.0 -M 0.1 -S -1.0 -c -1
+Relation:     customer
+Instances:    10
+Attributes:   6
+              milk
+              beer
+              diapers
+              bread
+              butter
+              cookies
+=== Associator model (full training set) ===
+
+
+Apriori
+=======
+
+Minimum support: 0.55 (5 instances)
+Minimum metric <confidence>: 0.5
+Number of cycles performed: 9
+
+Generated sets of large itemsets:
+
+Size of set of large itemsets L(1): 9
+
+Size of set of large itemsets L(2): 5
+
+Size of set of large itemsets L(3): 1
+
+Best rules found:
+
+ 1. bread=true 5 ==> beer=false 5    <conf:(1)> lift:(1.67) lev:(0.2) [2] conv:(2)
+ 2. butter=true 5 ==> beer=false 5    <conf:(1)> lift:(1.67) lev:(0.2) [2] conv:(2)
+ 3. butter=true 5 ==> bread=true 5    <conf:(1)> lift:(2) lev:(0.25) [2] conv:(2.5)
+ 4. bread=true 5 ==> butter=true 5    <conf:(1)> lift:(2) lev:(0.25) [2] conv:(2.5)
+ 5. butter=false 5 ==> bread=false 5    <conf:(1)> lift:(2) lev:(0.25) [2] conv:(2.5)
+ 6. bread=false 5 ==> butter=false 5    <conf:(1)> lift:(2) lev:(0.25) [2] conv:(2.5)
+ 7. bread=true butter=true 5 ==> beer=false 5    <conf:(1)> lift:(1.67) lev:(0.2) [2] conv:(2)
+ 8. beer=false butter=true 5 ==> bread=true 5    <conf:(1)> lift:(2) lev:(0.25) [2] conv:(2.5)
+ 9. beer=false bread=true 5 ==> butter=true 5    <conf:(1)> lift:(2) lev:(0.25) [2] conv:(2.5)
+10. butter=true 5 ==> beer=false bread=true 5    <conf:(1)> lift:(2) lev:(0.25) [2] conv:(2.5)
+
+
+
+=== Run information ===
+
+Scheme:       weka.associations.FPGrowth -P 2 -I -1 -N 10 -T 0 -C 0.5 -D 0.05 -U 3.0 -M 0.1
+Relation:     customer
+Instances:    10
+Attributes:   6
+              milk
+              beer
+              diapers
+              bread
+              butter
+              cookies
+=== Associator model (full training set) ===
+
+FPGrowth found 10 rules (displaying top 10)
+
+ 1. [milk=false, butter=false]: 3 ==> [bread=false]: 3   <conf:(1)> lift:(2) lev:(0.15) conv:(1.5) 
+ 2. [milk=false, bread=false]: 3 ==> [butter=false]: 3   <conf:(1)> lift:(2) lev:(0.15) conv:(1.5) 
+ 3. [milk=false]: 5 ==> [butter=false]: 3   <conf:(0.6)> lift:(1.2) lev:(0.05) conv:(0.83) 
+ 4. [butter=false]: 5 ==> [milk=false]: 3   <conf:(0.6)> lift:(1.2) lev:(0.05) conv:(0.83) 
+ 5. [milk=false]: 5 ==> [bread=false]: 3   <conf:(0.6)> lift:(1.2) lev:(0.05) conv:(0.83) 
+ 6. [bread=false]: 5 ==> [milk=false]: 3   <conf:(0.6)> lift:(1.2) lev:(0.05) conv:(0.83) 
+ 7. [milk=false]: 5 ==> [butter=false, bread=false]: 3   <conf:(0.6)> lift:(1.2) lev:(0.05) conv:(0.83) 
+ 8. [butter=false]: 5 ==> [milk=false, bread=false]: 3   <conf:(0.6)> lift:(2) lev:(0.15) conv:(1.17) 
+ 9. [bread=false]: 5 ==> [milk=false, butter=false]: 3   <conf:(0.6)> lift:(2) lev:(0.15) conv:(1.17) 
+10. [butter=false, bread=false]: 5 ==> [milk=false]: 3   <conf:(0.6)> lift:(1.2) lev:(0.05) conv:(0.83) 
+

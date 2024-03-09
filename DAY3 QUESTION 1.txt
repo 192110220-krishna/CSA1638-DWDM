@@ -1,0 +1,85 @@
+@relation "customer"
+@attribute a {true, false}
+@attribute b {true, false}
+@attribute c {true, false}
+@attribute d {true, false}
+@attribute e {true, false}
+
+@data
+true, false, false, true, true
+true, true, true, false, true
+true, true, false, true, true
+true, false, true, true, true
+false, true, true, false, true
+false, true, false, true, true
+false, false, true, true, false
+true, true, true, false, false, false
+
+
+
+=== Run information ===
+
+Scheme:       weka.associations.Apriori -N 10 -T 0 -C 0.5 -D 0.05 -U 3.0 -M 0.1 -S -1.0 -c -1
+Relation:     customer
+Instances:    8
+Attributes:   5
+              a
+              b
+              c
+              d
+              e
+=== Associator model (full training set) ===
+
+
+Apriori
+=======
+
+Minimum support: 0.4 (3 instances)
+Minimum metric <confidence>: 0.5
+Number of cycles performed: 12
+
+Generated sets of large itemsets:
+
+Size of set of large itemsets L(1): 9
+
+Size of set of large itemsets L(2): 13
+
+Size of set of large itemsets L(3): 3
+
+Best rules found:
+
+ 1. d=false 3 ==> b=true 3    <conf:(1)> lift:(1.6) lev:(0.14) [1] conv:(1.13)
+ 2. b=false 3 ==> d=true 3    <conf:(1)> lift:(1.6) lev:(0.14) [1] conv:(1.13)
+ 3. d=false 3 ==> c=true 3    <conf:(1)> lift:(1.6) lev:(0.14) [1] conv:(1.13)
+ 4. c=false 3 ==> d=true 3    <conf:(1)> lift:(1.6) lev:(0.14) [1] conv:(1.13)
+ 5. c=false 3 ==> e=true 3    <conf:(1)> lift:(1.33) lev:(0.09) [0] conv:(0.75)
+ 6. a=true d=true 3 ==> e=true 3    <conf:(1)> lift:(1.33) lev:(0.09) [0] conv:(0.75)
+ 7. c=true d=false 3 ==> b=true 3    <conf:(1)> lift:(1.6) lev:(0.14) [1] conv:(1.13)
+ 8. b=true d=false 3 ==> c=true 3    <conf:(1)> lift:(1.6) lev:(0.14) [1] conv:(1.13)
+ 9. b=true c=true 3 ==> d=false 3    <conf:(1)> lift:(2.67) lev:(0.23) [1] conv:(1.88)
+10. d=false 3 ==> b=true c=true 3    <conf:(1)> lift:(2.67) lev:(0.23) [1] conv:(1.88)
+
+
+=== Run information ===
+
+Scheme:       weka.associations.FPGrowth -P 2 -I -1 -N 10 -T 0 -C 0.5 -D 0.05 -U 3.0 -M 0.1
+Relation:     customer
+Instances:    8
+Attributes:   5
+              a
+              b
+              c
+              d
+              e
+=== Associator model (full training set) ===
+
+FPGrowth found 7 rules (displaying top 7)
+
+1. [b=false, a=false]: 1 ==> [e=false]: 1   <conf:(1)> lift:(4) lev:(0.09) conv:(0.75) 
+2. [b=false, e=false]: 1 ==> [a=false]: 1   <conf:(1)> lift:(2.67) lev:(0.08) conv:(0.63) 
+3. [a=false, e=false]: 1 ==> [b=false]: 1   <conf:(1)> lift:(2.67) lev:(0.08) conv:(0.63) 
+4. [e=false]: 2 ==> [d=false]: 1   <conf:(0.5)> lift:(1.33) lev:(0.03) conv:(0.63) 
+5. [e=false]: 2 ==> [b=false]: 1   <conf:(0.5)> lift:(1.33) lev:(0.03) conv:(0.63) 
+6. [e=false]: 2 ==> [a=false]: 1   <conf:(0.5)> lift:(1.33) lev:(0.03) conv:(0.63) 
+7. [e=false]: 2 ==> [b=false, a=false]: 1   <conf:(0.5)> lift:(4) lev:(0.09) conv:(0.88) 
+

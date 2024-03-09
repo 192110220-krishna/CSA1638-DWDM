@@ -1,0 +1,113 @@
+@relation "customer"
+@attribute M {true,false}
+@attribute O {true,false}
+@attribute N {true,false}
+@attribute K {true,false}
+@attribute E {true,false}
+@attribute Y {true,false}
+@attribute D {true,false}
+@attribute A {true,false}
+@attribute U {true,false}
+@attribute C {true,false}
+@attribute I {true,false}
+
+@data
+true,true,true,true,true,true,false,false,false,false,false
+false,true,true,true,true,true,true,false,false,false,false
+true,false,false,true,true,false,false,true,false,false,false
+true,false,false,true,false,true,false,false,true,true,false
+false,true,false,true,true,false,false,false,false,true,true
+
+
+
+
+
+
+=== Run information ===
+
+Scheme:       weka.associations.Apriori -N 10 -T 0 -C 0.8 -D 0.05 -U 50.0 -M 0.1 -S -1.0 -c -1
+Relation:     customer
+Instances:    5
+Attributes:   11
+              M
+              O
+              N
+              K
+              E
+              Y
+              D
+              A
+              U
+              C
+              I
+=== Associator model (full training set) ===
+
+
+Apriori
+=======
+
+Minimum support: 0.85 (4 instances)
+Minimum metric <confidence>: 0.8
+Number of cycles performed: 3
+
+Generated sets of large itemsets:
+
+Size of set of large itemsets L(1): 6
+
+Size of set of large itemsets L(2): 6
+
+Size of set of large itemsets L(3): 1
+
+Best rules found:
+
+ 1. E=true 4 ==> K=true 4    <conf:(1)> lift:(1) lev:(0) [0] conv:(0)
+ 2. D=false 4 ==> K=true 4    <conf:(1)> lift:(1) lev:(0) [0] conv:(0)
+ 3. A=false 4 ==> K=true 4    <conf:(1)> lift:(1) lev:(0) [0] conv:(0)
+ 4. U=false 4 ==> K=true 4    <conf:(1)> lift:(1) lev:(0) [0] conv:(0)
+ 5. I=false 4 ==> K=true 4    <conf:(1)> lift:(1) lev:(0) [0] conv:(0)
+ 6. U=false 4 ==> E=true 4    <conf:(1)> lift:(1.25) lev:(0.16) [0] conv:(0.8)
+ 7. E=true 4 ==> U=false 4    <conf:(1)> lift:(1.25) lev:(0.16) [0] conv:(0.8)
+ 8. E=true U=false 4 ==> K=true 4    <conf:(1)> lift:(1) lev:(0) [0] conv:(0)
+ 9. K=true U=false 4 ==> E=true 4    <conf:(1)> lift:(1.25) lev:(0.16) [0] conv:(0.8)
+10. K=true E=true 4 ==> U=false 4    <conf:(1)> lift:(1.25) lev:(0.16) [0] conv:(0.8)
+
+
+
+
+
+
+
+
+
+=== Run information ===
+
+Scheme:       weka.associations.FPGrowth -P 2 -I -1 -N 10 -T 0 -C 0.8 -D 0.05 -U 50.0 -M 0.1
+Relation:     customer
+Instances:    5
+Attributes:   11
+              M
+              O
+              N
+              K
+              E
+              Y
+              D
+              A
+              U
+              C
+              I
+=== Associator model (full training set) ===
+
+FPGrowth found 71 rules (displaying top 10)
+
+ 1. [C=false]: 3 ==> [U=false]: 3   <conf:(1)> lift:(1.25) lev:(0.12) conv:(0.6) 
+ 2. [Y=false]: 2 ==> [U=false]: 2   <conf:(1)> lift:(1.25) lev:(0.08) conv:(0.4) 
+ 3. [M=false]: 2 ==> [U=false]: 2   <conf:(1)> lift:(1.25) lev:(0.08) conv:(0.4) 
+ 4. [C=false]: 3 ==> [I=false]: 3   <conf:(1)> lift:(1.25) lev:(0.12) conv:(0.6) 
+ 5. [O=false]: 2 ==> [I=false]: 2   <conf:(1)> lift:(1.25) lev:(0.08) conv:(0.4) 
+ 6. [N=false]: 3 ==> [D=false]: 3   <conf:(1)> lift:(1.25) lev:(0.12) conv:(0.6) 
+ 7. [Y=false]: 2 ==> [D=false]: 2   <conf:(1)> lift:(1.25) lev:(0.08) conv:(0.4) 
+ 8. [O=false]: 2 ==> [D=false]: 2   <conf:(1)> lift:(1.25) lev:(0.08) conv:(0.4) 
+ 9. [M=false]: 2 ==> [A=false]: 2   <conf:(1)> lift:(1.25) lev:(0.08) conv:(0.4) 
+10. [Y=false]: 2 ==> [N=false]: 2   <conf:(1)> lift:(1.67) lev:(0.16) conv:(0.8) 
+

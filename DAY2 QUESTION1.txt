@@ -1,0 +1,25 @@
+age_groups <- c("5-6 years", "7-8 years", "9-10 years")
+photograph_B <- c(22, 28, 10)
+photograph_C <- c(20, 40, 40)
+
+cov_BC <- cov(photograph_B, photograph_C)
+
+preference_matrix <- matrix(c(photograph_B, photograph_C), nrow = 3, byrow = TRUE)
+
+cov_preferences <- cov(preference_matrix)
+
+cor_BC <- cor(photograph_B, photograph_C)
+
+cor_preferences <- cor(preference_matrix)
+
+print("Sample Covariance between B and C:")
+print(cov_BC)
+
+print("Sample Covariance Matrix for Preferences:")
+print(cov_preferences)
+
+print("Sample Correlation between B and C:")
+print(cor_BC)
+
+print("Sample Correlation Matrix for Preferences:")
+print(cor_preferences)

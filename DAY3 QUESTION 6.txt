@@ -1,0 +1,96 @@
+@relation "customer"
+@attribute hotdogs {true,false}
+@attribute buns {true,false}
+@attribute ketchup {true,false}
+@attribute coke {true,false}
+@attribute chips {true,false}
+
+@data
+true,true,true,false,false
+true,true,false,false,false
+true,false,false,true,true
+false,false,false,true,true
+false,false,true,false,true
+true,false,false,true,true
+
+
+
+
+
+
+=== Run information ===
+
+Scheme:       weka.associations.Apriori -N 10 -T 0 -C 0.6 -D 0.05 -U 33.33 -M 0.1 -S -1.0 -c -1
+Relation:     customer
+Instances:    6
+Attributes:   5
+              hotdogs
+              buns
+              ketchup
+              coke
+              chips
+=== Associator model (full training set) ===
+
+
+Apriori
+=======
+
+Minimum support: 0.55 (3 instances)
+Minimum metric <confidence>: 0.6
+Number of cycles performed: 9
+
+Generated sets of large itemsets:
+
+Size of set of large itemsets L(1): 6
+
+Size of set of large itemsets L(2): 7
+
+Size of set of large itemsets L(3): 4
+
+Size of set of large itemsets L(4): 1
+
+Best rules found:
+
+ 1. chips=true 4 ==> buns=false 4    <conf:(1)> lift:(1.5) lev:(0.22) [1] conv:(1.33)
+ 2. buns=false 4 ==> chips=true 4    <conf:(1)> lift:(1.5) lev:(0.22) [1] conv:(1.33)
+ 3. coke=true 3 ==> buns=false 3    <conf:(1)> lift:(1.5) lev:(0.17) [1] conv:(1)
+ 4. coke=true 3 ==> ketchup=false 3    <conf:(1)> lift:(1.5) lev:(0.17) [1] conv:(1)
+ 5. coke=true 3 ==> chips=true 3    <conf:(1)> lift:(1.5) lev:(0.17) [1] conv:(1)
+ 6. ketchup=false coke=true 3 ==> buns=false 3    <conf:(1)> lift:(1.5) lev:(0.17) [1] conv:(1)
+ 7. buns=false coke=true 3 ==> ketchup=false 3    <conf:(1)> lift:(1.5) lev:(0.17) [1] conv:(1)
+ 8. buns=false ketchup=false 3 ==> coke=true 3    <conf:(1)> lift:(2) lev:(0.25) [1] conv:(1.5)
+ 9. coke=true 3 ==> buns=false ketchup=false 3    <conf:(1)> lift:(2) lev:(0.25) [1] conv:(1.5)
+10. ketchup=false chips=true 3 ==> buns=false 3    <conf:(1)> lift:(1.5) lev:(0.17) [1] conv:(1)
+
+
+
+
+
+
+=== Run information ===
+
+Scheme:       weka.associations.FPGrowth -P 2 -I -1 -N 10 -T 0 -C 0.6 -D 0.05 -U 33.33 -M 0.1
+Relation:     customer
+Instances:    6
+Attributes:   5
+              hotdogs
+              buns
+              ketchup
+              coke
+              chips
+=== Associator model (full training set) ===
+
+FPGrowth found 10 rules (displaying top 10)
+
+ 1. [hotdogs=false]: 2 ==> [buns=false]: 2   <conf:(1)> lift:(1.5) lev:(0.11) conv:(0.67) 
+ 2. [chips=false]: 2 ==> [coke=false]: 2   <conf:(1)> lift:(2) lev:(0.17) conv:(1) 
+ 3. [ketchup=false, hotdogs=false]: 1 ==> [buns=false]: 1   <conf:(1)> lift:(1.5) lev:(0.06) conv:(0.33) 
+ 4. [ketchup=false, coke=false]: 1 ==> [chips=false]: 1   <conf:(1)> lift:(3) lev:(0.11) conv:(0.67) 
+ 5. [ketchup=false, chips=false]: 1 ==> [coke=false]: 1   <conf:(1)> lift:(2) lev:(0.08) conv:(0.5) 
+ 6. [buns=false, coke=false]: 1 ==> [hotdogs=false]: 1   <conf:(1)> lift:(3) lev:(0.11) conv:(0.67) 
+ 7. [coke=false, hotdogs=false]: 1 ==> [buns=false]: 1   <conf:(1)> lift:(1.5) lev:(0.06) conv:(0.33) 
+ 8. [ketchup=false]: 4 ==> [buns=false]: 3   <conf:(0.75)> lift:(1.13) lev:(0.06) conv:(0.67) 
+ 9. [buns=false]: 4 ==> [ketchup=false]: 3   <conf:(0.75)> lift:(1.13) lev:(0.06) conv:(0.67) 
+10. [coke=false]: 3 ==> [chips=false]: 2   <conf:(0.67)> lift:(2) lev:(0.17) conv:(1) 
+
+

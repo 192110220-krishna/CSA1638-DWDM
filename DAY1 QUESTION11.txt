@@ -1,0 +1,5 @@
+ages <- c(13,15,16,16,19,20,20,21,22,22,25,25,25,25,30,33,35,35,35,35,36,40,45,46,52,70)
+q1 <-quantile(ages, 0.25,type=6)
+q3 <-quantile(ages, 0.75,type=6)
+cat("q1(25th percentile):",q1,"\n")
+cat("q3(75th percentile):",q3,"\n")

@@ -1,0 +1,32 @@
+age <- c(23,23,27,27,39,41,47,49,50,52,54,54,56,57,58,58,60,61)
+body_fat <- c(9.5,26.5,7.8,17.8,31.4,25.9,27.4,27.2,31.2,34.6,42.5,28.8,33.4,30.2,34.1,32.9,41.2,35.7)
+mean_age <- mean(age)
+median_age <- median(age)
+sd_age <- sd(age)
+
+mean_body_fat <- mean(body_fat)
+median_body_fat <- median(body_fat)
+sd_body_fat <- sd(body_fat)
+cat("Age Mean:", mean_age, "\n")
+cat("Age Median:", median_age, "\n")
+cat("Age Standard Deviation:", sd_age, "\n")
+
+cat("%Fat Mean:", mean_body_fat, "\n")
+cat("%Fat Median:", median_body_fat, "\n")
+cat("%Fat Standard Deviation:", sd_body_fat, "\n")
+
+par(mfrow = c(1, 2))  # To create a 1x2 grid for plots
+boxplot(age, main = "Age", ylab = "Age", col = "lightblue")
+boxplot(body_fat, main = "%Fat", ylab = "%Fat", col = "lightgreen")
+
+
+par(mfrow = c(1, 2)) 
+
+plot(age, body_fat, main = "Scatter Plot", xlab = "Age", ylab = "%Fat", pch = 19, col = "blue")
+
+
+qqnorm(age, main = "Q-Q Plot for Age")
+qqline(age, col = 2)
+
+qqnorm(body_fat, main = "Q-Q Plot for %Fat")
+qqline(body_fat, col = 2)
